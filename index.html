@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Sai Tent House — Premium Event Decoration</title>
+<meta name="description" content="Premium tent house, wedding decoration, reception setups, birthday decoration, stage, lighting & complete event management. Trusted since 2010.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --radius: 1rem;
+  --background: #faf8f5;
+  --foreground: #1a1510;
+  --card: #ffffff;
+  --card-foreground: #1a1510;
+  --primary: #d46a2a;
+  --primary-foreground: #fff8f0;
+  --primary-glow: #e89a5a;
+  --secondary: #f3efe9;
+  --secondary-foreground: #1a1510;
+  --muted: #f0ece6;
+  --muted-foreground: #6b6055;
+  --accent: #f5e6d3;
+  --accent-foreground: #3d2e1f;
+  --border: #e2dbd2;
+  --input: #e9e3da;
+  --ring: #d46a2a;
+  --gold: #c9983e;
+  --success: #2d8a4e;
+  --shadow-soft: 0 10px 30px -10px rgba(26,21,16,0.15);
+  --shadow-glow: 0 20px 60px -15px rgba(212,106,42,0.45);
+  --shadow-card: 0 4px 20px -4px rgba(26,21,16,0.1);
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Poppins", sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--background); color:var(--foreground); font-family:var(--font-sans); line-height:1.6; }
+h1,h2,h3,h4 { font-family:var(--font-display); letter-spacing:-0.02em; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+ul { list-style:none; }
+
+.container { max-width:1280px; margin:0 auto; padding:0 24px; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:50; transition:all 0.3s; padding:20px 0; }
+nav.scrolled { background:rgba(250,248,245,0.92); backdrop-filter:blur(12px); box-shadow:var(--shadow-soft); padding:12px 0; }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; }
+.logo { display:flex; align-items:center; gap:8px; font-family:var(--font-display); font-size:1.5rem; font-weight:800; }
+.logo span:first-child { font-size:1.75rem; }
+nav:not(.scrolled) .logo .brand { color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.4); }
+nav.scrolled .logo .brand { color:var(--primary); }
+.desktop-nav { display:flex; align-items:center; gap:32px; }
+.desktop-nav a { font-size:0.875rem; font-weight:600; transition:color 0.2s; }
+.desktop-nav a:hover { color:var(--primary); }
+nav:not(.scrolled) .desktop-nav a { color:#fff; }
+nav.scrolled .desktop-nav a { color:var(--foreground); }
+.call-btn { display:inline-flex; align-items:center; gap:6px; border-radius:9999px; background:var(--primary); color:var(--primary-foreground); padding:10px 22px; font-size:0.875rem; font-weight:600; box-shadow:var(--shadow-glow); transition:transform 0.2s; }
+.call-btn:hover { transform:scale(1.05); }
+.mobile-toggle { display:none; font-size:1.75rem; background:none; border:none; cursor:pointer; }
+nav:not(.scrolled) .mobile-toggle { color:#fff; }
+nav.scrolled .mobile-toggle { color:var(--foreground); }
+.mobile-menu { display:none; background:var(--background); border-top:1px solid var(--border); padding:16px 24px; }
+.mobile-menu a { display:block; padding:10px 0; font-weight:600; }
+.mobile-menu a:hover { color:var(--primary); }
+
+@media (max-width:768px) {
+  .desktop-nav { display:none; }
+  .mobile-toggle { display:block; }
+  .mobile-menu.open { display:block; }
+}
+
+/* HERO */
+.hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:120px 24px 80px; overflow:hidden; background: linear-gradient(135deg, rgba(212,106,42,0.92), rgba(180,70,30,0.85)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=80'); background-size:cover; background-position:center; }
+.hero-content { position:relative; z-index:10; max-width:900px; color:#fff; }
+.badge { display:inline-block; border-radius:9999px; background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); padding:6px 18px; font-size:0.875rem; font-weight:500; letter-spacing:0.05em; border:1px solid rgba(255,255,255,0.2); animation:fadeDown 0.8s ease-out both; }
+.hero h1 { margin-top:24px; font-size:3.5rem; font-weight:800; line-height:1.1; animation:fadeDown 0.8s ease-out 0.15s both; }
+@media (max-width:768px) { .hero h1 { font-size:2.5rem; } }
+.hero h1 .gradient-text { background:linear-gradient(135deg, var(--primary-glow), var(--primary)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.hero p { margin-top:20px; font-size:1.125rem; color:rgba(255,255,255,0.9); max-width:640px; margin-left:auto; margin-right:auto; line-height:1.7; animation:fadeUp 0.8s ease-out 0.3s both; }
+.hero-btns { margin-top:40px; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; animation:fadeUp 0.8s ease-out 0.45s both; }
+.btn-primary { display:inline-block; border-radius:9999px; background:var(--primary); color:var(--primary-foreground); padding:16px 36px; font-weight:600; box-shadow:var(--shadow-glow); transition:transform 0.2s; }
+.btn-primary:hover { transform:scale(1.05); }
+.btn-outline { display:inline-block; border-radius:9999px; background:rgba(255,255,255,0.1); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:16px 36px; font-weight:600; transition:background 0.2s; }
+.btn-outline:hover { background:rgba(255,255,255,0.2); }
+.scroll-hint { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.7); font-size:0.875rem; animation:float 3s ease-in-out infinite; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+/* SECTIONS */
+.section { padding:96px 0; }
+.section-title { text-align:center; max-width:640px; margin:0 auto; }
+.section-label { color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:0.15em; font-size:0.875rem; }
+.section h2 { margin-top:12px; font-size:2.5rem; font-weight:800; }
+@media (max-width:768px) { .section h2 { font-size:2rem; } }
+.section-subtitle { margin-top:12px; color:var(--muted-foreground); }
+
+/* ABOUT */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:48px; }
+@media (max-width:768px) { .about-grid { grid-template-columns:1fr; } }
+.about-img-wrap { position:relative; }
+.about-img-wrap img { border-radius:24px; box-shadow:var(--shadow-glow); width:100%; height:500px; object-fit:cover; }
+@media (max-width:768px) { .about-img-wrap img { height:300px; } }
+.about-badge { position:absolute; bottom:-24px; right:-24px; background:var(--primary); color:var(--primary-foreground); border-radius:16px; padding:16px 24px; box-shadow:var(--shadow-glow); }
+@media (max-width:768px) { .about-badge { right:12px; bottom:-12px; } }
+.about-badge .num { font-family:var(--font-display); font-size:2rem; font-weight:800; }
+.about-badge .txt { font-size:0.875rem; }
+.about-text p { margin-top:16px; color:var(--muted-foreground); line-height:1.8; font-size:1.05rem; }
+.feature-list { margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.feature-item { display:flex; align-items:center; gap:8px; font-size:0.875rem; font-weight:500; }
+.feature-item span { display:grid; place-items:center; width:28px; height:28px; border-radius:9999px; background:rgba(212,106,42,0.1); color:var(--primary); font-size:0.75rem; }
+
+/* SERVICES */
+.bg-muted { background:rgba(240,236,230,0.4); }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+@media (max-width:1024px) { .services-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px) { .services-grid { grid-template-columns:1fr; } }
+.service-card { background:var(--card); border-radius:24px; padding:32px; box-shadow:var(--shadow-card); border:1px solid rgba(226,219,210,0.4); transition:all 0.3s; cursor:default; }
+.service-card:hover { box-shadow:var(--shadow-glow); transform:translateY(-8px); }
+.service-card .icon { font-size:3rem; margin-bottom:16px; transition:transform 0.3s; display:inline-block; }
+.service-card:hover .icon { transform:scale(1.1); }
+.service-card h3 { font-size:1.25rem; font-weight:700; }
+.service-card p { margin-top:12px; color:var(--muted-foreground); line-height:1.7; }
+
+/* COUNTERS */
+.counter-bar { background:linear-gradient(135deg, var(--primary), var(--primary-glow)); border-radius:24px; padding:48px 40px; box-shadow:var(--shadow-glow); color:var(--primary-foreground); }
+.counters-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; text-align:center; }
+@media (max-width:768px) { .counters-grid { grid-template-columns:repeat(2,1fr); } }
+.counter-num { font-family:var(--font-display); font-size:3.5rem; font-weight:800; }
+@media (max-width:768px) { .counter-num { font-size:2.5rem; } }
+.counter-label { margin-top:8px; font-weight:500; opacity:0.9; }
+
+/* GALLERY */
+.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:56px; }
+@media (max-width:1024px) { .gallery-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:640px) { .gallery-grid { grid-template-columns:repeat(2,1fr); } }
+.gallery-item { position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1; }
+.gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+.gallery-item:hover img { transform:scale(1.1); }
+.gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5), transparent); opacity:0; transition:opacity 0.3s; }
+.gallery-item:hover .gallery-overlay { opacity:1; }
+
+/* PACKAGES */
+.packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:56px; }
+@media (max-width:768px) { .packages-grid { grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto; } }
+.package-card { position:relative; background:var(--card); border-radius:24px; padding:32px; border:1px solid rgba(226,219,210,0.6); box-shadow:var(--shadow-card); transition:all 0.3s; }
+.package-card:hover { transform:translateY(-8px); }
+.package-card.popular { border-color:var(--primary); box-shadow:var(--shadow-glow); }
+@media (min-width:769px) { .package-card.popular { transform:scale(1.05); } }
+.popular-badge { position:absolute; top:-16px; left:50%; transform:translateX(-50%); background:var(--primary); color:var(--primary-foreground); border-radius:9999px; padding:6px 16px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+.package-card h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:700; }
+.price { display:flex; align-items:baseline; gap:4px; margin-top:16px; }
+.price .currency { color:var(--muted-foreground); font-size:1.125rem; }
+.price .amount { font-size:3.5rem; font-weight:800; background:linear-gradient(135deg, var(--primary-glow), var(--primary)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.price-note { font-size:0.875rem; color:var(--muted-foreground); }
+.package-list { margin-top:24px; }
+.package-list li { display:flex; align-items:center; gap:10px; padding:8px 0; font-size:0.9375rem; }
+.package-list li span { display:grid; place-items:center; width:20px; height:20px; border-radius:9999px; background:rgba(212,106,42,0.1); color:var(--primary); font-size:0.65rem; }
+.package-btn { display:block; text-align:center; margin-top:24px; border-radius:9999px; padding:14px; font-weight:600; transition:all 0.2s; }
+.package-card.popular .package-btn { background:var(--primary); color:var(--primary-foreground); }
+.package-card:not(.popular) .package-btn { background:var(--secondary); color:var(--secondary-foreground); }
+.package-card:not(.popular) .package-btn:hover { background:var(--primary); color:var(--primary-foreground); }
+.package-card.popular .package-btn:hover { transform:scale(1.05); }
+
+/* TESTIMONIALS */
+.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+@media (max-width:768px) { .testimonials-grid { grid-template-columns:1fr; } }
+.testimonial-card { background:var(--card); border-radius:24px; padding:32px; box-shadow:var(--shadow-card); border:1px solid rgba(226,219,210,0.4); }
+.stars { color:var(--gold); font-size:1.25rem; letter-spacing:2px; }
+.testimonial-card p { margin-top:16px; color:var(--muted-foreground); line-height:1.7; font-style:italic; }
+.testimonial-author { margin-top:24px; display:flex; align-items:center; gap:12px; }
+.author-avatar { width:44px; height:44px; border-radius:9999px; background:var(--primary); color:var(--primary-foreground); display:grid; place-items:center; font-weight:700; font-size:0.875rem; }
+.author-name { font-weight:700; }
+.author-role { font-size:0.875rem; color:var(--muted-foreground); }
+
+/* BOOKING */
+.booking-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; margin-top:56px; }
+@media (max-width:768px) { .booking-grid { grid-template-columns:1fr; } }
+.booking-info h3 { font-size:1.75rem; font-weight:700; }
+.booking-info p { margin-top:12px; color:var(--muted-foreground); line-height:1.7; }
+.contact-blocks { margin-top:32px; display:grid; gap:16px; }
+.contact-block { display:flex; align-items:center; gap:16px; padding:20px; background:var(--card); border-radius:16px; box-shadow:var(--shadow-card); border:1px solid rgba(226,219,210,0.4); }
+.contact-icon { width:48px; height:48px; border-radius:12px; background:rgba(212,106,42,0.1); color:var(--primary); display:grid; place-items:center; font-size:1.25rem; flex-shrink:0; }
+.contact-block div div:first-child { font-weight:600; }
+.contact-block div div:last-child { font-size:0.875rem; color:var(--muted-foreground); }
+.form-card { background:var(--card); border-radius:24px; padding:32px; box-shadow:var(--shadow-card); border:1px solid rgba(226,219,210,0.4); }
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-size:0.875rem; font-weight:600; margin-bottom:6px; }
+.form-group input, .form-group select, .form-group textarea { width:100%; padding:12px 16px; border-radius:12px; border:1px solid var(--input); background:var(--background); font-family:inherit; font-size:0.9375rem; color:var(--foreground); outline:none; transition:border-color 0.2s, box-shadow 0.2s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(212,106,42,0.15); }
+.form-group textarea { resize:vertical; min-height:100px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:480px) { .form-row { grid-template-columns:1fr; } }
+.btn-submit { width:100%; border:none; border-radius:9999px; background:var(--primary); color:var(--primary-foreground); padding:16px; font-family:inherit; font-size:1rem; font-weight:600; cursor:pointer; box-shadow:var(--shadow-glow); transition:transform 0.2s; }
+.btn-submit:hover { transform:scale(1.02); }
+
+/* FOOTER */
+.footer { background:#1a1510; color:#c8bfb4; padding:64px 0 32px; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; }
+@media (max-width:768px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:480px) { .footer-grid { grid-template-columns:1fr; } }
+.footer-brand { font-family:var(--font-display); font-size:1.5rem; font-weight:800; color:#fff; }
+.footer-desc { margin-top:12px; line-height:1.7; }
+.footer h4 { color:#fff; font-size:1rem; font-weight:700; margin-bottom:20px; }
+.footer-links li { margin-bottom:12px; }
+.footer-links a { transition:color 0.2s; }
+.footer-links a:hover { color:#fff; }
+.footer-bottom { margin-top:48px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; font-size:0.875rem; color:#8a7f74; }
+
+/* FLOATING ACTIONS */
+.fab-wrap { position:fixed; bottom:24px; right:24px; z-index:40; display:flex; flex-direction:column; gap:12px; }
+.fab { width:56px; height:56px; border-radius:9999px; display:grid; place-items:center; font-size:1.5rem; box-shadow:var(--shadow-glow); transition:transform 0.2s; }
+.fab:hover { transform:scale(1.1); }
+.fab-wa { background:#25d366; color:#fff; }
+.fab-call { background:var(--primary); color:var(--primary-foreground); }
+
+/* LIGHTBOX */
+.lightbox { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; padding:24px; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90%; max-height:85vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+.lightbox-close { position:absolute; top:24px; right:24px; color:#fff; font-size:2.5rem; cursor:pointer; background:none; border:none; }
+.lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2rem; background:rgba(255,255,255,0.1); border:none; width:48px; height:48px; border-radius:9999px; cursor:pointer; display:grid; place-items:center; }
+.lightbox-prev { left:24px; }
+.lightbox-next { right:24px; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="logo">
+        <span>🎪</span>
+        <span class="brand">Sri Sai Tent House</span>
+      </a>
+      <div class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#packages">Packages</a>
+        <a href="#booking">Book Now</a>
+        <a href="tel:+919999999999" class="call-btn">📞 Call Now</a>
+      </div>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#packages" onclick="toggleMenu()">Packages</a>
+    <a href="#booking" onclick="toggleMenu()">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="badge">✨ Trusted Since 2010 · Vijayawada</span>
+    <h1>Making Every Event <span class="gradient-text">Grand</span></h1>
+    <p>Premium tent house, wedding &amp; reception decoration, birthday setups, stage, lighting and complete event management — all under one roof.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book Your Event</a>
+      <a href="#gallery" class="btn-outline">View Gallery</a>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ Scroll</div>
+</header>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&amp;q=80" alt="Elegant wedding mandap decoration" loading="lazy">
+        <div class="about-badge">
+          <div class="num">15+</div>
+          <div class="txt">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">About Us</span>
+        <h2>Trusted Decorators Since 2010</h2>
+        <p>Sri Sai Tent House provides complete event decoration services including weddings, birthdays, receptions, house warming ceremonies and corporate events with premium quality furniture, lighting and stage setup.</p>
+        <p>Our mission is to make every event memorable through elegant decoration, on-time delivery and dedicated professional service.</p>
+        <div class="feature-list">
+          <div class="feature-item"><span>✓</span>Premium Quality</div>
+          <div class="feature-item"><span>✓</span>On-time Delivery</div>
+          <div class="feature-item"><span>✓</span>Affordable Pricing</div>
+          <div class="feature-item"><span>✓</span>Expert Team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section bg-muted" id="services">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">What We Offer</span>
+      <h2>Our Services</h2>
+      <p class="section-subtitle">Everything you need to make your event unforgettable — from setup to celebration.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">💒</div>
+        <h3>Wedding Decoration</h3>
+        <p>Luxury stages, mandap, and floral arrangements that turn your big day into a fairy-tale.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎂</div>
+        <h3>Birthday Decoration</h3>
+        <p>Themed setups, balloon arches and cake stages that delight every age.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎪</div>
+        <h3>Tent Setup</h3>
+        <p>Premium tents, shamiyana and canopy arrangements for every gathering.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💡</div>
+        <h3>Lighting &amp; Sound</h3>
+        <p>Decorative lights, LED walls and crystal-clear sound systems.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🪑</div>
+        <h3>Chairs &amp; Tables</h3>
+        <p>Comfortable seating, banquet tables and VIP sofa setups.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🌸</div>
+        <h3>Flower Decoration</h3>
+        <p>Fresh-flower walls, garlands, entry gates and stage backdrops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="section">
+  <div class="container">
+    <div class="counter-bar">
+      <div class="counters-grid">
+        <div>
+          <div class="counter-num" data-target="5000">0</div>
+          <div class="counter-label">Events Completed</div>
+        </div>
+        <div>
+          <div class="counter-num" data-target="3000">0</div>
+          <div class="counter-label">Happy Customers</div>
+        </div>
+        <div>
+          <div class="counter-num" data-target="15">0</div>
+          <div class="counter-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="counter-num" data-target="100" data-suffix="%">0</div>
+          <div class="counter-label">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">Our Work</span>
+      <h2>Gallery</h2>
+      <p class="section-subtitle">A glimpse of decorations we have crafted for our clients.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&amp;q=80" alt="Event decoration 1" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&amp;q=80" alt="Event decoration 2" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="https://images.unsplash.com/photo-1530023367847-a683933f4172?w=900&amp;q=80" alt="Event decoration 3" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&amp;q=80" alt="Event decoration 4" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&amp;q=80" alt="Event decoration 5" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&amp;q=80" alt="Event decoration 6" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(6)">
+        <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=900&amp;q=80" alt="Event decoration 7" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(7)">
+        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=900&amp;q=80" alt="Event decoration 8" loading="lazy">
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section bg-muted" id="packages">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">Pricing</span>
+      <h2>Our Packages</h2>
+      <p class="section-subtitle">Choose a package that fits your event. All packages can be customised.</p>
+    </div>
+    <div class="packages-grid">
+      <div class="package-card">
+        <h3>Silver Package</h3>
+        <div class="price"><span class="currency">₹</span><span class="amount">25,000</span></div>
+        <p class="price-note">starting from</p>
+        <ul class="package-list">
+          <li><span>✓</span>Chairs &amp; Tables</li>
+          <li><span>✓</span>Standard Tent</li>
+          <li><span>✓</span>Basic Lighting</li>
+          <li><span>✓</span>Simple Stage</li>
+          <li><span>✓</span>Setup &amp; Teardown</li>
+        </ul>
+        <a href="#booking" class="package-btn">Book Now</a>
+      </div>
+      <div class="package-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3>Gold Package</h3>
+        <div class="price"><span class="currency">₹</span><span class="amount">55,000</span></div>
+        <p class="price-note">starting from</p>
+        <ul class="package-list">
+          <li><span>✓</span>Premium Tent</li>
+          <li><span>✓</span>Flower Decoration</li>
+          <li><span>✓</span>Decorative Lighting</li>
+          <li><span>✓</span>Themed Stage</li>
+          <li><span>✓</span>Sound System</li>
+          <li><span>✓</span>Entry Gate</li>
+        </ul>
+        <a href="#booking" class="package-btn">Book Now</a>
+      </div>
+      <div class="package-card">
+        <h3>Diamond Package</h3>
+        <div class="price"><span class="currency">₹</span><span class="amount">99,000</span></div>
+        <p class="price-note">starting from</p>
+        <ul class="package-list">
+          <li><span>✓</span>Luxury Decoration</li>
+          <li><span>✓</span>LED Wall</li>
+          <li><span>✓</span>Premium Flowers</li>
+          <li><span>✓</span>Luxury Stage</li>
+          <li><span>✓</span>VIP Seating</li>
+          <li><span>✓</span>Full Setup</li>
+        </ul>
+        <a href="#booking" class="package-btn">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">Reviews</span>
+      <h2>Happy Customers</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Excellent decoration and affordable pricing. Our wedding looked absolutely amazing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div><div class="author-name">Ravi Kumar</div><div class="author-role">Wedding Client</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Very professional team. Everything was completed on time and the stage was stunning."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div><div class="author-name">Suresh</div><div class="author-role">Reception Client</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Best tent house service in Vijayawada. Highly recommended for any occasion."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div><div class="author-name">Lakshmi</div><div class="author-role">Birthday Client</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section bg-muted" id="booking">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-label">Reserve Your Date</span>
+      <h2>Book Your Event</h2>
+      <p class="section-subtitle">Fill the form and we will get back to you within 24 hours.</p>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-info">
+        <h3>Let's Plan Your Perfect Event</h3>
+        <p>Whether it's a grand wedding, a cozy birthday, or a corporate gathering — we bring your vision to life with stunning decoration and flawless execution.</p>
+        <div class="contact-blocks">
+          <div class="contact-block">
+            <div class="contact-icon">📞</div>
+            <div><div>Call Us</div><div>+91 99999 99999</div></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">📍</div>
+            <div><div>Visit Us</div><div>Vijayawada, Andhra Pradesh</div></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-icon">⏰</div>
+            <div><div>Working Hours</div><div>Mon - Sun: 8 AM - 10 PM</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="formName" placeholder="Enter your name" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="formPhone" placeholder="Your phone number" required>
+            </div>
+            <div class="form-group">
+              <label>Event Date</label>
+              <input type="date" id="formDate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Event Type</label>
+              <select id="formEvent">
+                <option>Wedding</option>
+                <option>Reception</option>
+                <option>Birthday</option>
+                <option>Corporate</option>
+                <option>House Warming</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Guests</label>
+              <select id="formGuests">
+                <option>Below 100</option>
+                <option>100 - 300</option>
+                <option>300 - 500</option>
+                <option>500 - 1000</option>
+                <option>Above 1000</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Additional Details</label>
+            <textarea id="formDetails" placeholder="Tell us more about your event..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">🎪 Sri Sai Tent House</div>
+        <p class="footer-desc">Making every event grand with premium decoration and professional service since 2010.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#booking">Booking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Wedding</a></li>
+          <li><a href="#services">Reception</a></li>
+          <li><a href="#services">Birthday</a></li>
+          <li><a href="#services">Corporate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 +91 99999 99999</li>
+          <li>📍 Vijayawada, AP</li>
+          <li>⏰ 8 AM - 10 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Sri Sai Tent House. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<!-- FLOATING ACTIONS -->
+<div class="fab-wrap">
+  <a href="https://wa.me/919999999999" target="_blank" class="fab fab-wa" title="WhatsApp">💬</a>
+  <a href="tel:+919999999999" class="fab fab-call" title="Call Now">📞</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightboxBtn(event)">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">‹</button>
+  <img src="" alt="Gallery preview" id="lightboxImg">
+  <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">›</button>
+</div>
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '+';
+      const duration = 1600;
+      const start = performance.now();
+      function tick(t) {
+        const p = Math.min((t - start) / duration, 1);
+        el.textContent = Math.floor(p * target).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+
+// Lightbox
+const galleryImages = [
+  'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80',
+  'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80',
+  'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=1200&q=80',
+  'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
+  'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
+  'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&q=80',
+  'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&q=80',
+];
+let currentLightbox = 0;
+
+function openLightbox(index) {
+  currentLightbox = index;
+  document.getElementById('lightboxImg').src = galleryImages[index];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function closeLightboxBtn(e) {
+  e.stopPropagation();
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function prevImage(e) {
+  e.stopPropagation();
+  currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[currentLightbox];
+}
+
+function nextImage(e) {
+  e.stopPropagation();
+  currentLightbox = (currentLightbox + 1) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[currentLightbox];
+}
+
+// Keyboard nav for lightbox
+document.addEventListener('keydown', (e) => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  if (e.key === 'ArrowLeft') prevImage({stopPropagation:()=>{}});
+  if (e.key === 'ArrowRight') nextImage({stopPropagation:()=>{}});
+});
+
+// WhatsApp form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('formName').value;
+  const phone = document.getElementById('formPhone').value;
+  const date = document.getElementById('formDate').value;
+  const eventType = document.getElementById('formEvent').value;
+  const guests = document.getElementById('formGuests').value;
+  const details = document.getElementById('formDetails').value;
+  const msg = `Hello Sri Sai Tent House!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEvent: ${encodeURIComponent(eventType)}%0ADate: ${encodeURIComponent(date)}%0AGuests: ${encodeURIComponent(guests)}%0ADetails: ${encodeURIComponent(details || 'None')}`;
+  window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+}
+</script>
+</body>
+</html>
