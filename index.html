@@ -32,13 +32,14 @@
   --shadow-soft: 0 10px 30px -10px rgba(26,21,16,0.15);
   --shadow-glow: 0 20px 60px -15px rgba(212,106,42,0.45);
   --shadow-card: 0 4px 20px -4px rgba(26,21,16,0.1);
+  --shadow-premium: 0 25px 50px -12px rgba(26,21,16,0.18);
   --font-display: "Playfair Display", serif;
   --font-sans: "Poppins", sans-serif;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { background:var(--background); color:var(--foreground); font-family:var(--font-sans); line-height:1.6; }
+body { background:var(--background); color:var(--foreground); font-family:var(--font-sans); line-height:1.6; overflow-x:hidden; }
 h1,h2,h3,h4 { font-family:var(--font-display); letter-spacing:-0.02em; }
 a { text-decoration:none; color:inherit; }
 img { max-width:100%; display:block; }
@@ -80,7 +81,7 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 .badge { display:inline-block; border-radius:9999px; background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); padding:6px 18px; font-size:0.875rem; font-weight:500; letter-spacing:0.05em; border:1px solid rgba(255,255,255,0.2); animation:fadeDown 0.8s ease-out both; }
 .hero h1 { margin-top:24px; font-size:3.5rem; font-weight:800; line-height:1.1; animation:fadeDown 0.8s ease-out 0.15s both; }
 @media (max-width:768px) { .hero h1 { font-size:2.5rem; } }
-.hero h1 .gradient-text { background:linear-gradient(135deg, var(--primary-glow), var(--primary)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.hero h1 .gradient-text { background:linear-gradient(135deg, #ffd9b8, #ffffff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .hero p { margin-top:20px; font-size:1.125rem; color:rgba(255,255,255,0.9); max-width:640px; margin-left:auto; margin-right:auto; line-height:1.7; animation:fadeUp 0.8s ease-out 0.3s both; }
 .hero-btns { margin-top:40px; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; animation:fadeUp 0.8s ease-out 0.45s both; }
 .btn-primary { display:inline-block; border-radius:9999px; background:var(--primary); color:var(--primary-foreground); padding:16px 36px; font-weight:600; box-shadow:var(--shadow-glow); transition:transform 0.2s; }
@@ -95,7 +96,7 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 
 /* SECTIONS */
 .section { padding:96px 0; }
-.section-title { text-align:center; max-width:640px; margin:0 auto; }
+.section-title { text-align:center; max-width:680px; margin:0 auto; }
 .section-label { color:var(--primary); font-weight:600; text-transform:uppercase; letter-spacing:0.15em; font-size:0.875rem; }
 .section h2 { margin-top:12px; font-size:2.5rem; font-weight:800; }
 @media (max-width:768px) { .section h2 { font-size:2rem; } }
@@ -137,36 +138,29 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 .counter-label { margin-top:8px; font-weight:500; opacity:0.9; }
 
 /* GALLERY */
-.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:56px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:56px; }
 @media (max-width:1024px) { .gallery-grid { grid-template-columns:repeat(3,1fr); } }
-@media (max-width:640px) { .gallery-grid { grid-template-columns:repeat(2,1fr); } }
-.gallery-item { position:relative; overflow:hidden; border-radius:16px; aspect-ratio:1; }
-.gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-.gallery-item:hover img { transform:scale(1.1); }
-.gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5), transparent); opacity:0; transition:opacity 0.3s; }
+@media (max-width:640px) { .gallery-grid { grid-template-columns:repeat(2,1fr); gap:14px; } }
+.gallery-item { position:relative; overflow:hidden; border-radius:20px; aspect-ratio:1; cursor:pointer; box-shadow:var(--shadow-card); transition:all 0.4s ease; background:var(--muted); }
+.gallery-item:hover { transform:translateY(-6px); box-shadow:var(--shadow-premium); }
+.gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+.gallery-item:hover img { transform:scale(1.12); }
+.gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,21,16,0.7), transparent 60%); opacity:0; transition:opacity 0.35s ease; display:flex; align-items:flex-end; justify-content:center; padding:18px; color:#fff; font-weight:600; letter-spacing:0.05em; }
 .gallery-item:hover .gallery-overlay { opacity:1; }
+.gallery-overlay::before { content:'🔍'; font-size:1.5rem; }
 
-/* PACKAGES */
-.packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:56px; }
-@media (max-width:768px) { .packages-grid { grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto; } }
-.package-card { position:relative; background:var(--card); border-radius:24px; padding:32px; border:1px solid rgba(226,219,210,0.6); box-shadow:var(--shadow-card); transition:all 0.3s; }
-.package-card:hover { transform:translateY(-8px); }
-.package-card.popular { border-color:var(--primary); box-shadow:var(--shadow-glow); }
-@media (min-width:769px) { .package-card.popular { transform:scale(1.05); } }
-.popular-badge { position:absolute; top:-16px; left:50%; transform:translateX(-50%); background:var(--primary); color:var(--primary-foreground); border-radius:9999px; padding:6px 16px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
-.package-card h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:700; }
-.price { display:flex; align-items:baseline; gap:4px; margin-top:16px; }
-.price .currency { color:var(--muted-foreground); font-size:1.125rem; }
-.price .amount { font-size:3.5rem; font-weight:800; background:linear-gradient(135deg, var(--primary-glow), var(--primary)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.price-note { font-size:0.875rem; color:var(--muted-foreground); }
-.package-list { margin-top:24px; }
-.package-list li { display:flex; align-items:center; gap:10px; padding:8px 0; font-size:0.9375rem; }
-.package-list li span { display:grid; place-items:center; width:20px; height:20px; border-radius:9999px; background:rgba(212,106,42,0.1); color:var(--primary); font-size:0.65rem; }
-.package-btn { display:block; text-align:center; margin-top:24px; border-radius:9999px; padding:14px; font-weight:600; transition:all 0.2s; }
-.package-card.popular .package-btn { background:var(--primary); color:var(--primary-foreground); }
-.package-card:not(.popular) .package-btn { background:var(--secondary); color:var(--secondary-foreground); }
-.package-card:not(.popular) .package-btn:hover { background:var(--primary); color:var(--primary-foreground); }
-.package-card.popular .package-btn:hover { transform:scale(1.05); }
+/* EVENT ITEMS */
+.items-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px; }
+@media (max-width:1024px) { .items-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px) { .items-grid { grid-template-columns:1fr; } }
+.item-card { position:relative; background:var(--card); border-radius:24px; padding:32px 28px; box-shadow:var(--shadow-card); border:1px solid rgba(226,219,210,0.5); transition:all 0.35s ease; overflow:hidden; }
+.item-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--primary), var(--primary-glow)); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; }
+.item-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-premium); border-color:rgba(212,106,42,0.3); }
+.item-card:hover::before { transform:scaleX(1); }
+.item-icon { width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg, rgba(212,106,42,0.12), rgba(232,154,90,0.18)); color:var(--primary); display:grid; place-items:center; font-size:1.75rem; margin-bottom:20px; transition:all 0.35s ease; }
+.item-card:hover .item-icon { background:linear-gradient(135deg, var(--primary), var(--primary-glow)); color:#fff; transform:rotate(-6deg) scale(1.08); box-shadow:var(--shadow-glow); }
+.item-card h3 { font-size:1.25rem; font-weight:700; color:var(--foreground); }
+.item-card p { margin-top:10px; color:var(--muted-foreground); font-size:0.95rem; line-height:1.65; }
 
 /* TESTIMONIALS */
 .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
@@ -221,52 +215,52 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 .fab-call { background:var(--primary); color:var(--primary-foreground); }
 
 /* LIGHTBOX */
-.lightbox { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; padding:24px; }
+.lightbox { display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.92); align-items:center; justify-content:center; padding:24px; }
 .lightbox.open { display:flex; }
 .lightbox img { max-width:90%; max-height:85vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
-.lightbox-close { position:absolute; top:24px; right:24px; color:#fff; font-size:2.5rem; cursor:pointer; background:none; border:none; }
+.lightbox-close { position:absolute; top:24px; right:24px; color:#fff; font-size:2.5rem; cursor:pointer; background:none; border:none; line-height:1; }
 .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2rem; background:rgba(255,255,255,0.1); border:none; width:48px; height:48px; border-radius:9999px; cursor:pointer; display:grid; place-items:center; }
+.lightbox-nav:hover { background:rgba(255,255,255,0.2); }
 .lightbox-prev { left:24px; }
 .lightbox-next { right:24px; }
+
+/* Reveal on scroll */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav id="navbar">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#home" class="logo">
-        <span>🎪</span>
-        <span class="brand">Sri Sai Tent House</span>
-      </a>
-      <div class="desktop-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#packages">Packages</a>
-        <a href="#booking">Book Now</a>
-        <a href="tel:+919533433336" class="call-btn">📞 Call Now</a>
-      </div>
-      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <div class="container nav-inner">
+    <a href="#" class="logo"><span>🎪</span><span class="brand">Sri Sai Tent House</span></a>
+    <div class="desktop-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#items">Event Items</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#booking">Book Now</a>
+      <a href="tel:+919533433336" class="call-btn">📞 Call Now</a>
     </div>
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" onclick="toggleMenu()">Home</a>
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#services" onclick="toggleMenu()">Services</a>
-    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-    <a href="#packages" onclick="toggleMenu()">Packages</a>
-    <a href="#booking" onclick="toggleMenu()">Book Now</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#items">Event Items</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Book Now</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero" id="home">
+<section class="hero" id="home">
   <div class="hero-content">
     <span class="badge">✨ Trusted Since 2010 · Vijayawada</span>
-    <h1>Making Every Event <span class="gradient-text">Grand</span></h1>
+    <h1>Making Every Event <span class="gradient-text">Grand &amp; Memorable</span></h1>
     <p>Premium tent house, wedding &amp; reception decoration, birthday setups, stage, lighting and complete event management — all under one roof.</p>
     <div class="hero-btns">
       <a href="#booking" class="btn-primary">Book Your Event</a>
@@ -274,20 +268,20 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
     </div>
   </div>
   <div class="scroll-hint">↓ Scroll</div>
-</header>
+</section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap">
-        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&amp;q=80" alt="Elegant wedding mandap decoration" loading="lazy">
+      <div class="about-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Wedding decoration">
         <div class="about-badge">
           <div class="num">15+</div>
           <div class="txt">Years of Excellence</div>
         </div>
       </div>
-      <div class="about-text">
+      <div class="about-text reveal">
         <span class="section-label">About Us</span>
         <h2>Trusted Decorators Since 2010</h2>
         <p>Sri Sai Tent House provides complete event decoration services including weddings, birthdays, receptions, house warming ceremonies and corporate events with premium quality furniture, lighting and stage setup.</p>
@@ -306,67 +300,61 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 <!-- SERVICES -->
 <section class="section bg-muted" id="services">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <span class="section-label">What We Offer</span>
       <h2>Our Services</h2>
       <p class="section-subtitle">Everything you need to make your event unforgettable — from setup to celebration.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="icon">💒</div>
-        <h3>Wedding Decoration</h3>
-        <p>Luxury stages, mandap, and floral arrangements that turn your big day into a fairy-tale.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🎂</div>
-        <h3>Birthday Decoration</h3>
-        <p>Themed setups, balloon arches and cake stages that delight every age.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🎪</div>
-        <h3>Tent Setup</h3>
-        <p>Premium tents, shamiyana and canopy arrangements for every gathering.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">💡</div>
-        <h3>Lighting &amp; Sound</h3>
-        <p>Decorative lights, LED walls and crystal-clear sound systems.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🪑</div>
-        <h3>Chairs &amp; Tables</h3>
-        <p>Comfortable seating, banquet tables and VIP sofa setups.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🌸</div>
-        <h3>Flower Decoration</h3>
-        <p>Fresh-flower walls, garlands, entry gates and stage backdrops.</p>
-      </div>
+      <div class="service-card reveal"><div class="icon">💒</div><h3>Wedding Decoration</h3><p>Luxury stages, mandap, and floral arrangements that turn your big day into a fairy-tale.</p></div>
+      <div class="service-card reveal"><div class="icon">🎉</div><h3>Reception Setup</h3><p>Elegant entry arches, premium seating and themed stages for a memorable celebration.</p></div>
+      <div class="service-card reveal"><div class="icon">🎂</div><h3>Birthday Decoration</h3><p>Themed setups, balloon arches and cake stages that delight every age.</p></div>
+      <div class="service-card reveal"><div class="icon">🎪</div><h3>Tent Setup</h3><p>Premium tents, shamiyana and canopy arrangements for every gathering.</p></div>
+      <div class="service-card reveal"><div class="icon">💡</div><h3>Lighting &amp; Sound</h3><p>Decorative lighting, LED walls and complete sound systems for any venue.</p></div>
+      <div class="service-card reveal"><div class="icon">🪑</div><h3>Chairs &amp; Tables</h3><p>Comfortable seating, banquet tables and VIP sofa setups.</p></div>
     </div>
   </div>
 </section>
 
 <!-- COUNTERS -->
-<section class="section">
+<section class="section" style="padding-top:0;">
   <div class="container">
-    <div class="counter-bar">
+    <div class="counter-bar reveal">
       <div class="counters-grid">
-        <div>
-          <div class="counter-num" data-target="5000">0</div>
-          <div class="counter-label">Events Completed</div>
-        </div>
-        <div>
-          <div class="counter-num" data-target="3000">0</div>
-          <div class="counter-label">Happy Customers</div>
-        </div>
-        <div>
-          <div class="counter-num" data-target="15">0</div>
-          <div class="counter-label">Years Experience</div>
-        </div>
-        <div>
-          <div class="counter-num" data-target="100" data-suffix="%">0</div>
-          <div class="counter-label">Satisfaction</div>
-        </div>
+        <div><div class="counter-num" data-target="2500">0</div><div class="counter-label">Events Completed</div></div>
+        <div><div class="counter-num" data-target="1800">0</div><div class="counter-label">Happy Customers</div></div>
+        <div><div class="counter-num" data-target="15">0</div><div class="counter-label">Years Experience</div></div>
+        <div><div class="counter-num" data-target="100">0</div><div class="counter-label">% Satisfaction</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT ITEMS (replaces Packages) -->
+<section class="section bg-muted" id="items">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="section-label">Inventory</span>
+      <h2>Our Event Items</h2>
+      <p class="section-subtitle">All Types of Event Decoration Materials Available Under One Roof</p>
+    </div>
+    <div class="items-grid">
+      <div class="item-card reveal"><div class="item-icon">🏛️</div><h3>Super Structure</h3><p>Heavy-duty modular structures crafted for grand weddings, exhibitions and large gatherings.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🎤</div><h3>Jockey Stage</h3><p>Premium jockey stages with sturdy decks ideal for performances, DJs and event hosts.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🟫</div><h3>All Types of Mats</h3><p>Carpets, jute mats, premium red carpets and floor mats for every kind of setup.</p></div>
+      <div class="item-card reveal"><div class="item-icon">⛺</div><h3>Pagodas</h3><p>Elegant pagoda tents perfect for outdoor receptions, garden events and entry zones.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🪑</div><h3>Hand &amp; Handless Chairs</h3><p>Comfortable padded chairs in multiple styles for guests at weddings and receptions.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🛠️</div><h3>Steel Chairs</h3><p>Durable steel chairs in bulk quantity for large gatherings and conventional setups.</p></div>
+      <div class="item-card reveal"><div class="item-icon">💎</div><h3>Crystal Chairs</h3><p>Luxury crystal-finish chairs for premium weddings, VIP seating and royal receptions.</p></div>
+      <div class="item-card reveal"><div class="item-icon">⚪</div><h3>Round Tables</h3><p>Banquet-style round tables for guest dining and decorative center arrangements.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🔲</div><h3>Steel Tables</h3><p>Heavy-duty steel tables for catering, buffet counters and service stations.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🧱</div><h3>Side Walls</h3><p>Decorative side walls and panels to enclose pandals and create elegant boundaries.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🎪</div><h3>Pandals</h3><p>Complete pandal setups in customizable sizes for weddings, functions and pujas.</p></div>
+      <div class="item-card reveal"><div class="item-icon">🛋️</div><h3>Sofas</h3><p>Premium designer sofas for VIP seating, stage decoration and lounge zones.</p></div>
+      <div class="item-card reveal" style="grid-column:1/-1;text-align:center;background:linear-gradient(135deg, var(--primary), var(--primary-glow));color:#fff;border:none;">
+        <div class="item-icon" style="background:rgba(255,255,255,0.2);color:#fff;margin:0 auto 20px;">✨</div>
+        <h3 style="color:#fff;">All Types of Event Items Available</h3>
+        <p style="color:rgba(255,255,255,0.92);max-width:600px;margin:10px auto 0;">From the smallest accessory to grand structures — whatever your event needs, we have it ready to deliver.</p>
       </div>
     </div>
   </div>
@@ -375,209 +363,93 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 <!-- GALLERY -->
 <section class="section" id="gallery">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <span class="section-label">Our Work</span>
       <h2>Gallery</h2>
       <p class="section-subtitle">A glimpse of decorations we have crafted for our clients.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&amp;q=80" alt="Event decoration 1" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&amp;q=80" alt="Event decoration 2" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="https://images.unsplash.com/photo-1530023367847-a683933f4172?w=900&amp;q=80" alt="Event decoration 3" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&amp;q=80" alt="Event decoration 4" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&amp;q=80" alt="Event decoration 5" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&amp;q=80" alt="Event decoration 6" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(6)">
-        <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=900&amp;q=80" alt="Event decoration 7" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(7)">
-        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=900&amp;q=80" alt="Event decoration 8" loading="lazy">
-        <div class="gallery-overlay"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="section bg-muted" id="packages">
-  <div class="container">
-    <div class="section-title">
-      <span class="section-label">Pricing</span>
-      <h2>Our Packages</h2>
-      <p class="section-subtitle">Choose a package that fits your event. All packages can be customised.</p>
-    </div>
-    <div class="packages-grid">
-      <div class="package-card">
-        <h3>Silver Package</h3>
-        <div class="price"><span class="currency">₹</span><span class="amount">25,000</span></div>
-        <p class="price-note">starting from</p>
-        <ul class="package-list">
-          <li><span>✓</span>Chairs &amp; Tables</li>
-          <li><span>✓</span>Standard Tent</li>
-          <li><span>✓</span>Basic Lighting</li>
-          <li><span>✓</span>Simple Stage</li>
-          <li><span>✓</span>Setup &amp; Teardown</li>
-        </ul>
-        <a href="#booking" class="package-btn">Book Now</a>
-      </div>
-      <div class="package-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>Gold Package</h3>
-        <div class="price"><span class="currency">₹</span><span class="amount">55,000</span></div>
-        <p class="price-note">starting from</p>
-        <ul class="package-list">
-          <li><span>✓</span>Premium Tent</li>
-          <li><span>✓</span>Flower Decoration</li>
-          <li><span>✓</span>Decorative Lighting</li>
-          <li><span>✓</span>Themed Stage</li>
-          <li><span>✓</span>Sound System</li>
-          <li><span>✓</span>Entry Gate</li>
-        </ul>
-        <a href="#booking" class="package-btn">Book Now</a>
-      </div>
-      <div class="package-card">
-        <h3>Diamond Package</h3>
-        <div class="price"><span class="currency">₹</span><span class="amount">99,000</span></div>
-        <p class="price-note">starting from</p>
-        <ul class="package-list">
-          <li><span>✓</span>Luxury Decoration</li>
-          <li><span>✓</span>LED Wall</li>
-          <li><span>✓</span>Premium Flowers</li>
-          <li><span>✓</span>Luxury Stage</li>
-          <li><span>✓</span>VIP Seating</li>
-          <li><span>✓</span>Full Setup</li>
-        </ul>
-        <a href="#booking" class="package-btn">Book Now</a>
-      </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-index="0"><img src="images/gallery1.jpg" alt="Event decoration 1"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="1"><img src="images/gallery2.jpg" alt="Event decoration 2"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="2"><img src="images/gallery3.jpg" alt="Event decoration 3"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="3"><img src="images/gallery4.jpg" alt="Event decoration 4"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="4"><img src="images/gallery5.jpg" alt="Event decoration 5"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="5"><img src="images/gallery6.jpg" alt="Event decoration 6"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="6"><img src="images/gallery7.jpg" alt="Event decoration 7"><div class="gallery-overlay"></div></div>
+      <div class="gallery-item" data-index="7"><img src="images/gallery8.jpg" alt="Event decoration 8"><div class="gallery-overlay"></div></div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section">
+<section class="section bg-muted">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <span class="section-label">Reviews</span>
       <h2>Happy Customers</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
+      <div class="testimonial-card reveal">
         <div class="stars">★★★★★</div>
         <p>"Excellent decoration and affordable pricing. Our wedding looked absolutely amazing."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">RK</div>
-          <div><div class="author-name">Ravi Kumar</div><div class="author-role">Wedding Client</div></div>
-        </div>
+        <div class="testimonial-author"><div class="author-avatar">RK</div><div><div class="author-name">Ravi Kumar</div><div class="author-role">Wedding Client</div></div></div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card reveal">
         <div class="stars">★★★★★</div>
         <p>"Very professional team. Everything was completed on time and the stage was stunning."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">S</div>
-          <div><div class="author-name">Suresh</div><div class="author-role">Reception Client</div></div>
-        </div>
+        <div class="testimonial-author"><div class="author-avatar">S</div><div><div class="author-name">Suresh</div><div class="author-role">Reception Client</div></div></div>
       </div>
-      <div class="testimonial-card">
+      <div class="testimonial-card reveal">
         <div class="stars">★★★★★</div>
         <p>"Best tent house service in Vijayawada. Highly recommended for any occasion."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">L</div>
-          <div><div class="author-name">Lakshmi</div><div class="author-role">Birthday Client</div></div>
-        </div>
+        <div class="testimonial-author"><div class="author-avatar">L</div><div><div class="author-name">Lakshmi</div><div class="author-role">Birthday Client</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- BOOKING -->
-<section class="section bg-muted" id="booking">
+<section class="section" id="booking">
   <div class="container">
-    <div class="section-title">
+    <div class="section-title reveal">
       <span class="section-label">Reserve Your Date</span>
       <h2>Book Your Event</h2>
       <p class="section-subtitle">Fill the form and we will get back to you within 24 hours.</p>
     </div>
     <div class="booking-grid">
-      <div class="booking-info">
+      <div class="booking-info reveal">
         <h3>Let's Plan Your Perfect Event</h3>
         <p>Whether it's a grand wedding, a cozy birthday, or a corporate gathering — we bring your vision to life with stunning decoration and flawless execution.</p>
         <div class="contact-blocks">
-          <div class="contact-block">
-            <div class="contact-icon">📞</div>
-            <div><div>Call Us</div><div>+91 95334 33336</div></div>
-          </div>
-          <div class="contact-block">
-            <div class="contact-icon">📍</div>
-            <div><div>Visit Us</div><div>Vijayawada, Andhra Pradesh</div></div>
-          </div>
-          <div class="contact-block">
-            <div class="contact-icon">⏰</div>
-            <div><div>Working Hours</div><div>Mon - Sun: 8 AM - 10 PM</div></div>
-          </div>
+          <div class="contact-block"><div class="contact-icon">📞</div><div><div>Call Us</div><div>+91 95334 33336</div></div></div>
+          <div class="contact-block"><div class="contact-icon">📍</div><div><div>Visit Us</div><div>Vijayawada, Andhra Pradesh</div></div></div>
+          <div class="contact-block"><div class="contact-icon">⏰</div><div><div>Working Hours</div><div>Mon - Sun: 8 AM - 10 PM</div></div></div>
         </div>
       </div>
-      <div class="form-card">
-        <form onsubmit="handleSubmit(event)">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" id="formName" placeholder="Enter your name" required>
+      <div class="form-card reveal">
+        <form id="bookingForm">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" required></div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" required></div>
+            <div class="form-group"><label>Event Date</label><input type="date" name="date" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" id="formPhone" placeholder="Your phone number" required>
-            </div>
-            <div class="form-group">
-              <label>Event Date</label>
-              <input type="date" id="formDate" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Event Type</label>
-              <select id="formEvent">
-                <option>Wedding</option>
-                <option>Reception</option>
-                <option>Birthday</option>
-                <option>Corporate</option>
-                <option>House Warming</option>
-                <option>Other</option>
+            <div class="form-group"><label>Event Type</label>
+              <select name="eventType" required>
+                <option value="">Select</option>
+                <option>Wedding</option><option>Reception</option><option>Birthday</option>
+                <option>Corporate</option><option>House Warming</option><option>Other</option>
               </select>
             </div>
-            <div class="form-group">
-              <label>Number of Guests</label>
-              <select id="formGuests">
-                <option>Below 100</option>
-                <option>100 - 300</option>
-                <option>300 - 500</option>
-                <option>500 - 1000</option>
-                <option>Above 1000</option>
+            <div class="form-group"><label>Number of Guests</label>
+              <select name="guests" required>
+                <option value="">Select</option>
+                <option>Below 100</option><option>100 - 300</option><option>300 - 500</option>
+                <option>500 - 1000</option><option>Above 1000</option>
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label>Additional Details</label>
-            <textarea id="formDetails" placeholder="Tell us more about your event..."></textarea>
-          </div>
+          <div class="form-group"><label>Additional Details</label><textarea name="details" placeholder="Tell us about your event..."></textarea></div>
           <button type="submit" class="btn-submit">Send via WhatsApp</button>
         </form>
       </div>
@@ -598,6 +470,7 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
         <ul class="footer-links">
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#items">Event Items</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#booking">Booking</a></li>
         </ul>
@@ -605,10 +478,7 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
       <div>
         <h4>Our Services</h4>
         <ul class="footer-links">
-          <li><a href="#services">Wedding</a></li>
-          <li><a href="#services">Reception</a></li>
-          <li><a href="#services">Birthday</a></li>
-          <li><a href="#services">Corporate</a></li>
+          <li>Wedding</li><li>Reception</li><li>Birthday</li><li>Corporate</li>
         </ul>
       </div>
       <div>
@@ -626,116 +496,101 @@ nav.scrolled .mobile-toggle { color:var(--foreground); }
 
 <!-- FLOATING ACTIONS -->
 <div class="fab-wrap">
-  <a href="https://wa.me/919533433336" target="_blank" class="fab fab-wa" title="WhatsApp">💬</a>
-  <a href="tel:+919533433336" class="fab fab-call" title="Call Now">📞</a>
+  <a href="https://wa.me/919533433336" target="_blank" class="fab fab-wa" aria-label="WhatsApp">💬</a>
+  <a href="tel:+919533433336" class="fab fab-call" aria-label="Call">📞</a>
 </div>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightboxBtn(event)">×</button>
-  <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">‹</button>
-  <img src="" alt="Gallery preview" id="lightboxImg">
-  <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">›</button>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">×</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
 </div>
 
 <script>
-// Navbar scroll effect
+// Navbar scroll
+const nav = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
 // Mobile menu
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
+const mt = document.getElementById('mobileToggle');
+const mm = document.getElementById('mobileMenu');
+mt.addEventListener('click', () => mm.classList.toggle('open'));
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
 
-// Counter animation
-const counterObserver = new IntersectionObserver((entries) => {
+// Reveal on scroll
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Counters
+const counters = document.querySelectorAll('.counter-num');
+const counterObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '+';
-      const duration = 1600;
+      const target = +el.dataset.target;
+      const duration = 1800;
       const start = performance.now();
-      function tick(t) {
-        const p = Math.min((t - start) / duration, 1);
-        el.textContent = Math.floor(p * target).toLocaleString() + suffix;
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(p * target).toLocaleString();
         if (p < 1) requestAnimationFrame(tick);
-      }
+        else el.textContent = target.toLocaleString() + (target === 100 ? '%' : '+');
+      };
       requestAnimationFrame(tick);
-      counterObserver.unobserve(el);
+      counterObs.unobserve(el);
     }
   });
-}, { threshold: 0.5 });
-document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+}, { threshold: 0.4 });
+counters.forEach(c => counterObs.observe(c));
 
-// Lightbox
+// Gallery + Lightbox
 const galleryImages = [
-  'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80',
-  'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80',
-  'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=1200&q=80',
-  'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
-  'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
-  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80',
-  'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&q=80',
-  'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1200&q=80',
+  'images/gallery1.jpg',
+  'images/gallery2.jpg',
+  'images/gallery3.jpg',
+  'images/gallery4.jpg',
+  'images/gallery5.jpg',
+  'images/gallery6.jpg',
+  'images/gallery7.jpg',
+  'images/gallery8.jpg'
 ];
-let currentLightbox = 0;
-
-function openLightbox(index) {
-  currentLightbox = index;
-  document.getElementById('lightboxImg').src = galleryImages[index];
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox(e) {
-  if (e.target === document.getElementById('lightbox')) {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-
-function closeLightboxBtn(e) {
-  e.stopPropagation();
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function prevImage(e) {
-  e.stopPropagation();
-  currentLightbox = (currentLightbox - 1 + galleryImages.length) % galleryImages.length;
-  document.getElementById('lightboxImg').src = galleryImages[currentLightbox];
-}
-
-function nextImage(e) {
-  e.stopPropagation();
-  currentLightbox = (currentLightbox + 1) % galleryImages.length;
-  document.getElementById('lightboxImg').src = galleryImages[currentLightbox];
-}
-
-// Keyboard nav for lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let lbIdx = 0;
+const showLb = (i) => { lbIdx = (i + galleryImages.length) % galleryImages.length; lbImg.src = galleryImages[lbIdx]; lb.classList.add('open'); };
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => showLb(+item.dataset.index));
+});
+document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+document.getElementById('lbPrev').onclick = (e) => { e.stopPropagation(); showLb(lbIdx - 1); };
+document.getElementById('lbNext').onclick = (e) => { e.stopPropagation(); showLb(lbIdx + 1); };
+lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('open'); });
 document.addEventListener('keydown', (e) => {
-  const lb = document.getElementById('lightbox');
   if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
-  if (e.key === 'ArrowLeft') prevImage({stopPropagation:()=>{}});
-  if (e.key === 'ArrowRight') nextImage({stopPropagation:()=>{}});
+  if (e.key === 'Escape') lb.classList.remove('open');
+  if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+  if (e.key === 'ArrowRight') showLb(lbIdx + 1);
 });
 
-// WhatsApp form submit
-function handleSubmit(e) {
+// Booking form -> WhatsApp
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = document.getElementById('formName').value;
-  const phone = document.getElementById('formPhone').value;
-  const date = document.getElementById('formDate').value;
-  const eventType = document.getElementById('formEvent').value;
-  const guests = document.getElementById('formGuests').value;
-  const details = document.getElementById('formDetails').value;
-  const msg = `Hello Sri Sai Tent House!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEvent: ${encodeURIComponent(eventType)}%0ADate: ${encodeURIComponent(date)}%0AGuests: ${encodeURIComponent(guests)}%0ADetails: ${encodeURIComponent(details || 'None')}`;
+  const f = e.target;
+  const msg = `*New Event Booking Enquiry*%0A%0A` +
+    `*Name:* ${encodeURIComponent(f.name.value)}%0A` +
+    `*Phone:* ${encodeURIComponent(f.phone.value)}%0A` +
+    `*Event Date:* ${encodeURIComponent(f.date.value)}%0A` +
+    `*Event Type:* ${encodeURIComponent(f.eventType.value)}%0A` +
+    `*Guests:* ${encodeURIComponent(f.guests.value)}%0A` +
+    `*Details:* ${encodeURIComponent(f.details.value || '-')}`;
   window.open(`https://wa.me/919533433336?text=${msg}`, '_blank');
-}
+});
 </script>
 </body>
 </html>
